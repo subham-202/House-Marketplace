@@ -3,14 +3,13 @@ import { useState,useEffect } from "react"
 import { useNavigate,Link } from "react-router-dom"
 import {updateDoc,doc} from 'firebase/firestore'
 import { db } from "../firebase.config"
-import { async } from "@firebase/util"
 import { toast } from "react-toastify"
 function Profile() {
   const auth=getAuth()
   const [changedDetails,setChangedDetails]=useState(false);
   const [formData,setFormData]=useState({
-    name:auth.currentUser.displayName,
-    email:auth.currentUser.email,
+    name:auth.currentUser?.displayName,
+    email:auth.currentUser?.email,
   })
   const { name, email } = formData
   const navigate=useNavigate();
@@ -30,6 +29,7 @@ function Profile() {
         })
       }
     }catch(error){
+      console.log(error)
       toast.error('Could not update')
     }
   }
