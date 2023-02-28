@@ -6,6 +6,7 @@ import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRig
 import vissibilityIcon from '../assets/svg/visibilityIcon.svg'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import OAuth from '../Components/OAuth'
 function SignIn() {
   const [showPassword,setShowPassword]=useState(false)
   const [formData,setFormData]=useState({
@@ -55,7 +56,7 @@ function SignIn() {
             />
             <img src={vissibilityIcon} alt="show Password" className='showPassword'onClick={() => setShowPassword((prevState) => !prevState)} />
           </div>
-          <Link to='/forgot-password' className='forgotPasswrdLink'>
+          <Link to='/forgot-password' className='forgotPasswordLink'>
             ForgotPassword
           </Link>
           <div className='signInBar'>
@@ -65,7 +66,7 @@ function SignIn() {
           </button>
           </div>
         </form>
-        {/* Google OAuth */}
+          <OAuth/>
         <Link to='/sign-up' className='registerLink'>
           Sign Up Instead
         </Link>
